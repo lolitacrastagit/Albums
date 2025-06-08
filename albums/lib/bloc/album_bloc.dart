@@ -9,7 +9,8 @@ class AlbumBloc extends Bloc<FetchDataEvent, AlbumState> {
       emit(LoadingState());
       /*List<AlbumsModel> userCredential = await ApiService().fetchAlbums("");
       emit(SignInSuccessState(userCredential.user?.displayName, userCredential.user?.email));
-   */ });
+   */
+    });
   }
 
 
