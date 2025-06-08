@@ -6,29 +6,37 @@ const albumsAPI = "https://jsonplaceholder.typicode.com";
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: albumsAPI, // ✅ Base URL
+      baseUrl: albumsAPI,
     ),
   );
 
-  // 🧠 Fetch user by ID (parameterized function)
-  Future<AlbumsModel> fetchAlbums(String path) async {
-    try {
-      final response = await _dio.get(path); // 👈 Using parameter
-      return AlbumsModel.fromJson(response.data);
-    } catch (e) {
-      throw Exception('Failed to fetch user: $e');
-    }
+
+  Future<List<AlbumsModel>> fetchAlbums(String path) async {
+    print("reached fetch Albums");
+    /*try {*/
+      final response = await _dio.get(path);
+      List<AlbumsModel> albums = (response.data as List)
+          .map((json) => AlbumsModel.fromJson(json))
+          .toList();
+      return albums;
+ /*   } catch (e) {
+      pr
+    }*/
   }
 
-  Future<AlbumDetailModel> fetchUserById(String path, {Map<String, dynamic>? queryParams}) async {
-    try {
+  Future<List<AlbumDetailModel>> fetchDetails(String path, {Map<String, dynamic>? queryParams}) async {
+    print("reached fetch details");
+   /* try {*/
       final response = await _dio.get(
         path,
         queryParameters: queryParams, // ✅ Add query parameters
       );
-      return AlbumDetailModel.fromJson(response.data);
-    } catch (e) {
+      List<AlbumDetailModel> albums = (response.data as List)
+          .map((json) => AlbumDetailModel.fromJson(json))
+          .toList();
+      return albums;
+   /* } catch (e) {
       throw Exception('Failed to fetch user: $e');
-    }
+    }*/
   }
 }
