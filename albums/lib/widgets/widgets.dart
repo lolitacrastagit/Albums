@@ -2,13 +2,16 @@
 import 'package:flutter/material.dart';
 
 getImage({imageUrl = "https://dummyimage.com/100x100.png/09f/fff"}){
-  return ClipRRect(
-    borderRadius: BorderRadius.circular(16.0), // Change to desired corner radius
-    child: Image.network(
-      imageUrl,
-      width: 150,
-      height: 150,
-      fit: BoxFit.cover,
+  return Padding(
+    padding: const EdgeInsets.only(right: 10.0),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(16.0), // Change to desired corner radius
+      child: Image.network(
+        imageUrl,
+        width: 150,
+        height: 150,
+        fit: BoxFit.cover,
+      ),
     ),
   );
 }

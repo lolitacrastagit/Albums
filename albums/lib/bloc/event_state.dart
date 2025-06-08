@@ -12,4 +12,8 @@ class DataLoadedState extends AlbumState {
 class ErrorState extends AlbumState {}
 class FetchDataEvent {}
 class FetchAlbumsEvent extends FetchDataEvent{}
+class RefreshDataEvent extends FetchDataEvent{
+  final List<AlbumModel> albumModel;
+  RefreshDataEvent(this.albumModel);
+}
 

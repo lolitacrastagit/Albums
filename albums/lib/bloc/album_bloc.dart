@@ -13,6 +13,9 @@ class AlbumBloc extends Bloc<FetchDataEvent, AlbumState> {
       List<AlbumModel> data = await getAlbumModel(albums);
       emit(DataLoadedState(data));
     });
+    on<RefreshDataEvent>((event, emit){
+      emit(DataLoadedState(event.albumModel));
+    });
   }
 
   getAlbumModel(List<AlbumsModel> albumsModel) async {
